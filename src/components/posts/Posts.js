@@ -9,7 +9,7 @@ import { Card } from 'react-bootstrap';
 const Posts = () => {
   const [posts, setPosts] = useState([]);
   const [isCreatePostFormVisible, setCreatePostFormVisible] = useState(false);
-  const [error, setError] = useState(null);
+  const [setError] = useState(null);
 
   useEffect(() => {
     const accessToken = localStorage.getItem('accessToken');
