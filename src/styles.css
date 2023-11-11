@@ -1,8 +1,12 @@
 /* General */
 
+html {
+    background-color: black;
+}
 body {
     color: white;
     font-family: 'Roboto', sans-serif;
+    background-color: black;
 }
 
 a {
@@ -23,8 +27,12 @@ h1, h2, h4, nav {
 
 .error-message {
     color: #d9534f
-
 }
+
+.success-message {
+    color: #3c7b46 ;
+}
+
 /* Cards */
 
 .card {
@@ -35,7 +43,7 @@ h1, h2, h4, nav {
 
 .card-container {
     margin: auto;
-    width: 70%;
+    width: 100%;
     padding: 10px;
 }
 

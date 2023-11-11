@@ -7,7 +7,6 @@ import UserProfile from '../userProfile/UserProfile';
 
 const MyProfile = () => {
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [editedPost, setEditedPost] = useState(null);
   const name = localStorage.getItem('name');
@@ -75,15 +74,12 @@ const MyProfile = () => {
           } else {
             throw new Error('Invalid API response');
           }
-          setLoading(false);
         })
         .catch(error => {
           setError(error.message);
-          setLoading(false);
         });
     } else {
       setError('Unauthorized');
-      setLoading(false);
     }
   }, [name, accessToken]);
 

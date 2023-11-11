@@ -119,6 +119,7 @@ const Posts = () => {
             </Card>
           </div>
         ))}
+        {error && <div>Error: {error}</div>}
       </div>
     </div>
   );
