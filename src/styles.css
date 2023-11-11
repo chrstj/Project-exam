@@ -37,14 +37,14 @@ h1, h2, h4, nav {
 
 .card {
     background-color: #1F2326;
-    max-width: 1000px;
     color: white;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-width: 600px; /* Set a maximum width for the card */
+    margin: 0 auto; /* Center the card horizontally */
 
-.card-container {
-    margin: auto;
-    width: 100%;
-    padding: 10px;
 }
 
 /* Images */
