@@ -111,9 +111,9 @@ const Register = () => {
       <button className="btn btn-primary" onClick={handleFormSubmit}>
         Register
       </button>
-      {error && <div className="error-message">{error}</div>}
+      {error && <div className="text-danger">{error}</div>}
       {registrationSuccess && (
-        <div className="success-message">Registration successful</div>
+        <div className="text-success">Registration successful</div>
       )}
 
       <p className="message">Already have a user?</p>

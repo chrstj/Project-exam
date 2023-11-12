@@ -29,14 +29,6 @@ h1, h2, nav {
     font-family: 'Agbalumo', sans-serif;
 }
 
-.error-message {
-    color: #d9534f
-}
-
-.success-message {
-    color: #3c7b46 ;
-}
-
 /* Cards */
 
 .card {

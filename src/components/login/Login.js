@@ -62,7 +62,7 @@ const Login = ({ onLogin }) => {
         <Link to="/register">
           <button className="btn btn-secondary">Register Here</button>
         </Link>
-        {error && <div className="error-message">{error}</div>}
+        {error && <div className="text-danger">{error}</div>}
       </div>
     </div>
   );
