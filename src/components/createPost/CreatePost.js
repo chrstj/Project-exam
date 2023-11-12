@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const CreatePostForm = () => {
   const [postData, setPostData] = useState({
-    title: '',
-    body: '',
-    media: '',
+    title: "",
+    body: "",
+    media: "",
   });
   const [error, setError] = useState(null);
 
@@ -19,13 +19,13 @@ const CreatePostForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const accessToken = localStorage.getItem('accessToken');
+    const accessToken = localStorage.getItem("accessToken");
 
     if (accessToken) {
-      fetch('https://nf-api.onrender.com/api/v1/social/posts', {
-        method: 'POST',
+      fetch("https://nf-api.onrender.com/api/v1/social/posts", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
         body: JSON.stringify(postData),
@@ -42,7 +42,7 @@ const CreatePostForm = () => {
           setError(`Error creating post: ${error.message}`);
         });
     } else {
-      setError('Unauthorized user');
+      setError("Unauthorized user");
     }
   };
 
@@ -51,15 +51,34 @@ const CreatePostForm = () => {
       {error && <div className="error-message">{error}</div>}
       <form onSubmit={handleSubmit}>
         <div>
-          <input type="text" name="title" placeholder="Title" value={postData.title} onChange={handleInputChange} />
+          <input
+            type="text"
+            name="title"
+            placeholder="Title"
+            value={postData.title}
+            onChange={handleInputChange}
+          />
         </div>
         <div>
-          <textarea name="body" placeholder="Body" value={postData.body} onChange={handleInputChange} />
+          <textarea
+            name="body"
+            placeholder="Body"
+            value={postData.body}
+            onChange={handleInputChange}
+          />
         </div>
         <div>
-          <input type="text" name="media" placeholder="Media URL" value={postData.media} onChange={handleInputChange} />
+          <input
+            type="text"
+            name="media"
+            placeholder="Media URL"
+            value={postData.media}
+            onChange={handleInputChange}
+          />
         </div>
-        <button className="btn btn-info" type="submit">Post</button>
+        <button className="btn btn-info" type="submit">
+          Post
+        </button>
       </form>
     </div>
   );

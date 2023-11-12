@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    name: ''
+    email: "",
+    password: "",
+    name: "",
   });
   const [error, setError] = useState(null);
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
-
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -19,8 +18,12 @@ const Register = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.email.trim() || !formData.password.trim() || !formData.name.trim()) {
-      setError('All fields are required');
+    if (
+      !formData.email.trim() ||
+      !formData.password.trim() ||
+      !formData.name.trim()
+    ) {
+      setError("All fields are required");
       return;
     }
 
@@ -30,23 +33,26 @@ const Register = () => {
     }
 
     if (formData.name.length < 3) {
-      setError('Name must be at least 3 characters.');
+      setError("Name must be at least 3 characters.");
       return;
     }
 
     if (formData.password.length < 5) {
-      setError('Password must be at least 5 characters.');
+      setError("Password must be at least 5 characters.");
       return;
     }
 
     try {
-      const response = await fetch('https://nf-api.onrender.com/api/v1/social/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
+      const response = await fetch(
+        "https://nf-api.onrender.com/api/v1/social/auth/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
@@ -54,15 +60,15 @@ const Register = () => {
         const accessToken = data.accessToken;
         const name = data.name;
 
-        localStorage.setItem('accessToken', accessToken);
-        localStorage.setItem('name', name);
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("name", name);
 
         setRegistrationSuccess(true);
       } else {
-        setError('Registration failed');
+        setError("Registration failed");
       }
     } catch (error) {
-      setError('Error during registration: ' + error);
+      setError("Error during registration: " + error);
     }
   };
 
@@ -70,38 +76,47 @@ const Register = () => {
     <div className="container-sm text-center">
       <div className="register-page">
         <h1>Register</h1>
-        <input className="register-input"
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={formData.email}
-                onChange={handleInputChange} required
-                />
+        <input
+          className="register-input"
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleInputChange}
+          required
+        />
       </div>
       <div>
-        <input className="register-input"
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleInputChange} required
-                />
+        <input
+          className="register-input"
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleInputChange}
+          required
+        />
       </div>
       <div>
-        <input className="register-input"
-                type="text"
-                name="name" 
-                placeholder="Name"
-                value={formData.name}
-                onChange={handleInputChange} 
-                />
+        <input
+          className="register-input"
+          type="text"
+          name="name"
+          placeholder="Name"
+          value={formData.name}
+          onChange={handleInputChange}
+        />
       </div>
-        
-      <button className="btn btn-primary" onClick={handleFormSubmit}>Register</button>
-      {error && <div className="error-message">{error}</div>}
-      {registrationSuccess && <div className="success-message">Registration successful</div>}
 
-      <p>Already have a user?</p>
+      <button className="btn btn-primary" onClick={handleFormSubmit}>
+        Register
+      </button>
+      {error && <div className="error-message">{error}</div>}
+      {registrationSuccess && (
+        <div className="success-message">Registration successful</div>
+      )}
+
+      <p className="message">Already have a user?</p>
       <Link to="/login">
         <button className="btn btn-secondary">Log In</button>
       </Link>
