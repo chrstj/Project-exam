@@ -134,9 +134,9 @@ const MyProfile = () => {
     <div className="container-sm text-center">
       <UserProfile />
       <h2>My Posts</h2>
-      <ul>
+      <div className="card-container justify-content-center align-items-center">
         {posts.map((post) => (
-          <li key={post.id}>
+          <div key={post.id} className="mb-3">
             {editedPost && editedPost.id === post.id ? (
               <div>
                 <input
@@ -215,9 +215,9 @@ const MyProfile = () => {
                 </Card>
               </div>
             )}
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
       {error && <div>Error: {error}</div>}
     </div>
   );

@@ -104,7 +104,6 @@ const Posts = () => {
           Create New Post
         </button>
         {isCreatePostFormVisible && <CreatePostForm />}{" "}
-        {/* Conditionally render CreatePostForm */}
         {posts.map((post) => (
           <div key={post.id} className="mb-3">
             <Card>
